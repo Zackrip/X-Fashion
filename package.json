@@ -1,117 +1,33 @@
+## 📦 Packages
+
+### Backend Dependencies
+| Package | Version | Purpose |
+|---|---|---|
+| `express` | ^5.2.1 | Web server framework |
+| `mongoose` | ^9.1.6 | MongoDB ODM |
+| `jsonwebtoken` | ^9.0.3 | JWT auth tokens |
+| `bcryptjs` | ^3.0.3 | Password hashing |
+| `multer` | ^2.0.2 | File upload middleware |
+| `imagekit` | ^6.0.0 | Image/video cloud storage |
+| `@imagekit/nodejs` | ^7.2.2 | ImageKit Node SDK |
+| `dotenv` | ^17.2.4 | Environment variables |
+| `cors` | ^2.8.6 | Cross-origin requests |
+| `cookie-parser` | ^1.4.7 | Cookie handling |
+| `uuid` | ^13.0.0 | Unique file name generation |
+
+### Frontend Dependencies
+| Package | Version | Purpose |
+|---|---|---|
+| `react` | ^19.2.0 | UI library |
+| `react-dom` | ^19.2.0 | React DOM rendering |
+| `react-router-dom` | ^7.13.0 | Client-side routing |
+| `@reduxjs/toolkit` | ^2.11.2 | State management |
+| `react-redux` | ^9.2.0 | Redux React bindings |
+| `axios` | ^1.13.5 | HTTP requests |
+| `sonner` | ^2.0.7 | Toast notifications |
+| `lucide-react` | ^0.577.0 | Icon library |
+| `react-icons` | ^5.5.0 | Extra icon packs |
+| `tailwindcss` | ^4.2.1 | Utility-first CSS |
+| `vite` | ^7.3.1 | Build tool & dev server |
 
 ---
-
-## 🚀 Getting Started
-
-### Prerequisites
-- Node.js (v16+)
-- MongoDB (local or Atlas)
-- Cloudinary account (for media uploads)
-- npm or yarn
-
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/Zackrip/x-fashion.git
-   cd x-fashion
-   ```
-
-2. **Set up environment variables**
-   ```bash
-   cp .env.example .env
-   ```
-   Edit `.env` with your:
-   - MongoDB URI
-   - JWT secret
-   - Cloudinary credentials
-   - Port numbers
-
-3. **Install dependencies**
-   ```bash
-   # Backend
-   cd backend
-   npm install
-
-   # Frontend
-   cd ../frontend
-   npm install
-   ```
-
-4. **Run the development server**
-   ```bash
-   # Backend (from /server)
-   npx nodemon server.js
-
-   # Frontend (from /client)
-   npm run dev
-   ```
-
-   - Frontend: `http://localhost:5173`
-   - Backend: `http://localhost:3000`
-
----
-
-## 📸 Reel Feature Highlights
-
-- **Seamless Shopping Experience**: Users discover products through engaging video content and add to cart instantly
-- **Seller Benefits**: Higher conversion rates through visual storytelling
-- **Modern UI/UX**: Smooth scrolling, auto-play, and intuitive controls
-- **Performance Optimized**: Lazy loading, video compression, and efficient caching
-
----
-
-## 🔐 Security & Best Practices
-
-- JWT-based authentication with secure HTTP-only cookies
-- Password hashing with bcryptjs
-- Input validation and sanitization
-- CORS configuration
-- Role-based access control (RBAC)
-- Environment variable management
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
-
----
-
-## 👨‍💻 Author
-
-**Yash Gupta**  
-📍 Jaipur, Rajasthan, India  
-🔗 [GitHub Profile](https://github.com/Zackrip)  
-📧 Email: Darknoobp1@gmail.com
-
----
-
-## 🙏 Acknowledgments
-
-- Inspired by Instagram Reels and TikTok shopping features
-- Built with the MERN stack
-- Uses Cloudinary for media management
-- Design inspired by modern UI/UX trends
-
----
-
-<div align="center">
-
-**Made with ❤️ for the future of fashion e-commerce**
-
-⭐ Star this repo if you find it helpful!
-
-</div>
