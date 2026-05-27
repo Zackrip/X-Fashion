@@ -1,0 +1,49 @@
+:root{
+  --bg: #000000;
+  --card: #ffffff;
+  --text: #ffffff;
+  --muted: #000000;
+  --accent: #000000;
+  --input-bg: #000000;
+  --glass: rgba(255,255,255,0.6);
+}
+
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg: #ffffff;
+    --card: #ffffff;
+    --text: #000000;
+    --muted: #000000;
+    --accent: #7c83ff;
+    --input-bg: #ebebff;
+    --glass: rgba(8,10,12,0.6);
+  }
+}
+
+.auth-theme{ background:var(--bg); color:var(--text); }
+.card{ background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0)) , var(--card); }
+.text-muted{ color:var(--muted); }
+.link{ color:var(--accent); text-decoration:none; font-weight:600 }
+.input{
+  width:100%;
+  padding:0.65rem 0.75rem;
+  border-radius:0.6rem;
+  border:1px solid rgba(15,23,42,0.06);
+  background:var(--input-bg);
+  color:var(--text);
+  outline:none;
+}
+.input::placeholder{ color:var(--muted); }
+.btn-primary{
+  display:inline-block;
+  background: linear-gradient(90deg,var(--accent), #5b67ff);
+  color:white;
+  padding:0.65rem 0.9rem;
+  border-radius:0.65rem;
+  font-weight:600;
+  border:none;
+}
+
+@media (max-width:640px){
+  .card{ padding:1.25rem; }
+}
