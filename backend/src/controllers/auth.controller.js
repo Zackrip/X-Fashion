@@ -4,6 +4,8 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 async function registerUser(req, res) {
+  console.log("BODY:", req.body);
+console.log("JWT:", process.env.JWT_TOKEN);
   try {
     const { fullName, email, password, role } = req.body;
 
