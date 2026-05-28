@@ -4,59 +4,27 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 async function registerUser(req, res) {
-  console.log("BODY:", req.body);
-console.log("JWT:", process.env.JWT_TOKEN);
   try {
-    const { fullName, email, password, role } = req.body;
+    console.log("BODY:", req.body);
 
-    const ifUserExists = await userModel.findOne({
-      email,
-    });
+    const { fullName, email, password } = req.body;
 
-    if (ifUserExists) {
-      return res.status(400).json({
-        message: "User already exists",
-      });
-    }
-
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    const user = await userModel.create({
-      fullName,
-      email,
-      password: hashedPassword,
-      role: "user",
-    });
-
-    const token = jwt.sign(
-      {
-        id: user._id,
-        role: user.role,
-      },
-      process.env.JWT_TOKEN,
-      { expiresIn: "7d" },
-    );
-
-    res.cookie("token", token);
-
-    res.status(200).json({
-      message: "User registered successfully",
-      token, 
-      user: {
-        _id: user._id,
-        fullName: user.fullName,
-        email: user.email,
-        role: user.role,
+    return res.status(200).json({
+      message: "Register route working",
+      data: {
+        fullName,
+        email,
+        password,
       },
     });
+
   } catch (err) {
-  console.log("REGISTER ERROR:", err);
+    console.log("REGISTER ERROR:", err);
 
-  res.status(500).json({
-    message: err.message,
-    stack: err.stack,
-  });
-}
+    return res.status(500).json({
+      message: err.message,
+    });
+  }
 }
 
 async function loginUser(req, res) {
