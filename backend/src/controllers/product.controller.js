@@ -1,6 +1,6 @@
 const productModel = require("../models/product.model");
 const storageService = require("../services/storage.service");
-const { v4: uuid } = require("uuid");
+const crypto = require("crypto");
 
 const normalizeArray = (field) => {
   if (!field) return [];
@@ -30,7 +30,7 @@ const createProduct = async (req, res) => {
             const ext = file.originalname
               ? file.originalname.split(".").pop()
               : "jpg";
-            return storageService.uploadFile(file.buffer, `${uuid()}.${ext}`);
+            return storageService.uploadFile(file.buffer, `${crypto.randomUUID()}.${ext}`);
           })
       );
 
