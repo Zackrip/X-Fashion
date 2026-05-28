@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { LuSettings2 } from "react-icons/lu";
-import FilterSideBar from "../../components/products/filterSideBar";
+import FilterSideBar from "../../components/products/FilterSideBar";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
