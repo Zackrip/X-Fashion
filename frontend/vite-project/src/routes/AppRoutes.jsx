@@ -32,6 +32,7 @@ import AddProducts from "../pages/Seller/AddProduct";
 import BecomeSeller from "../pages/User/BecomeSeller";
 import SearchResultsPage from "../pages/User/SearchResultsPage";
 import ReelsPage from "../pages/User/ReelsPage";
+import LandingPage from "../pages/LandingPage";
 
 const AppRoutes = () => {
   return (
@@ -45,7 +46,7 @@ const AppRoutes = () => {
         <Route path="/user/login" element={<UserLogin />} />
         <Route path="/user/register" element={<UserRegister />} />
 
-        <Route path="/" element={<Navigate to="/user/login" />} />
+        <Route path="/" element={<LandingPage />} />
 
         {/* USER LAYOUT ROUTES */}
         <Route 

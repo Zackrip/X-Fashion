@@ -50,7 +50,7 @@ const Profile = () => {
         <div className="absolute right-0 mt-4 w-72 bg-white rounded-3xl shadow-xl p-6 z-50">
 
           <h2 className="text-2xl font-semibold mb-1">
-            Hi {user?.fullName?.split(" ")[0] || "Guest"} 👋
+            Hi {user?.fullName?.split(" ")[0] || "Guest"} 
           </h2>
           <p className="text-xs text-gray-400 mb-4 capitalize">{user?.role}</p>
 
