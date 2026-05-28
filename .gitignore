@@ -1,6 +1,5 @@
-JWT_TOKEN
 node_modules
-MONDODB_URL
-IAMAGEKIT_PUBLIC_KEY
-IMAGEKIT_PRIVATE_KEY
-IMAGEKIT_URL_ENDPOINT
+.env
+.env.local
+.vercel
+dist
