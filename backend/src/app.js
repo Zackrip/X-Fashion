@@ -28,8 +28,12 @@ app.use("/api/products", productRoutes);
 app.use("/api/orders", orderRoutes);
 
 app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({ message: err.message || "Internal Server Error" });
+  console.error("EXPRESS ERROR:", err);
+  res.status(500).json({ 
+    message: err.message || "Internal Server Error",
+    stack: err.stack,
+    details: err.toString()
+  });
 });
 
 module.exports = app;
