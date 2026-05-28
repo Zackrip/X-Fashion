@@ -48,8 +48,13 @@ async function registerUser(req, res) {
       },
     });
   } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
+  console.log("REGISTER ERROR:", err);
+
+  res.status(500).json({
+    message: err.message,
+    stack: err.stack,
+  });
+}
 }
 
 async function loginUser(req, res) {
