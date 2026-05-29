@@ -9,14 +9,43 @@ async function registerUser(req, res) {
 
     const { fullName, email, password } = req.body;
 
-    return res.status(200).json({
-      success: true,
-      message: "Register route working",
-      data: {
-        fullName,
-        email,
-        password,
+    const ifUserExists = await userModel.findOne({ email });
+
+    if (ifUserExists) {
+      return res.status(400).json({
+        message: "User already exists",
+      });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const user = await userModel.create({
+      fullName,
+      email,
+      password: hashedPassword,
+      role: "user",
+    });
+
+    const token = jwt.sign(
+      {
+        id: user._id,
+        role: user.role,
       },
+      process.env.JWT_TOKEN,
+      { expiresIn: "7d" }
+    );
+
+    // IMPORTANT FIX
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+    });
+
+    return res.status(200).json({
+      message: "User registered successfully",
+      token,
+      user,
     });
 
   } catch (err) {
