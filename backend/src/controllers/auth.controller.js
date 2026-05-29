@@ -10,6 +10,7 @@ async function registerUser(req, res) {
     const { fullName, email, password } = req.body;
 
     return res.status(200).json({
+      success: true,
       message: "Register route working",
       data: {
         fullName,
