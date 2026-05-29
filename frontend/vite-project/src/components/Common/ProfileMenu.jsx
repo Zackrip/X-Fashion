@@ -5,10 +5,15 @@ import axios from "axios";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
+const safeGetUser = () => {
+  try { return JSON.parse(localStorage.getItem("user")); }
+  catch { localStorage.removeItem("user"); return null; }
+};
+
 const Profile = () => {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = safeGetUser();
   const dropdownRef = useRef(null);
 
   const close = () => setOpen(false);

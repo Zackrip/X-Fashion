@@ -6,7 +6,8 @@ import { toast } from "sonner";
 const BecomeSeller = () => {
   const navigate = useNavigate();
   const [status, setStatus] = useState(null);
-  const user = JSON.parse(localStorage.getItem("user"));
+  let user = null;
+  try { user = JSON.parse(localStorage.getItem("user")); } catch { localStorage.removeItem("user"); }
 
   useEffect(() => {
     // fetch fresh user status from backend

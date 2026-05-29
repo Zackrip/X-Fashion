@@ -14,10 +14,15 @@ import { CgProfile } from "react-icons/cg";
 import Logo from "./Logo";
 import { useSelector } from "react-redux";
 
+const safeGetUser = () => {
+  try { return JSON.parse(localStorage.getItem("user")); }
+  catch { localStorage.removeItem("user"); return null; }
+};
+
 const Navbar = () => {
   const [navDrawerOpen, setNavDrawerOpen] = useState(false);
   const navigate = useNavigate();
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = safeGetUser();
 
   const toggleNavDrawer = () => setNavDrawerOpen(!navDrawerOpen);
   const closeDrawer = () => setNavDrawerOpen(false);

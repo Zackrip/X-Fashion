@@ -1,8 +1,13 @@
 import { Navigate } from "react-router-dom";
 import { toast } from "sonner";
 
+const safeGetUser = () => {
+  try { return JSON.parse(localStorage.getItem("user")); }
+  catch { localStorage.removeItem("user"); return null; }
+};
+
 const ProtectRoute = ({ children, allowedRoles }) => {
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = safeGetUser();
   const token = localStorage.getItem("token");
 
   // Not logged in → go to login
