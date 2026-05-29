@@ -5,11 +5,15 @@ const jwt = require("jsonwebtoken");
 
 async function registerUser(req, res) {
   try {
-    console.log("BODY:", req.body);
+    console.log("STEP 1");
 
     const { fullName, email, password } = req.body;
 
+    console.log("STEP 2");
+
     const ifUserExists = await userModel.findOne({ email });
+
+    console.log("STEP 3");
 
     if (ifUserExists) {
       return res.status(400).json({
@@ -17,7 +21,11 @@ async function registerUser(req, res) {
       });
     }
 
+    console.log("STEP 4");
+
     const hashedPassword = await bcrypt.hash(password, 10);
+
+    console.log("STEP 5");
 
     const user = await userModel.create({
       fullName,
@@ -25,6 +33,8 @@ async function registerUser(req, res) {
       password: hashedPassword,
       role: "user",
     });
+
+    console.log("STEP 6");
 
     const token = jwt.sign(
       {
@@ -35,24 +45,20 @@ async function registerUser(req, res) {
       { expiresIn: "7d" }
     );
 
-    // IMPORTANT FIX
+    console.log("STEP 7");
+
     res.cookie("token", token, {
       httpOnly: true,
       secure: true,
       sameSite: "none",
     });
 
-    const { password: _, ...safeUser } = user.toObject();
+    console.log("STEP 8");
 
     return res.status(200).json({
       message: "User registered successfully",
       token,
-      user: {
-        id: safeUser._id,
-        email: safeUser.email,
-        fullName: safeUser.fullName,
-        role: safeUser.role,
-      },
+      user,
     });
 
   } catch (err) {
