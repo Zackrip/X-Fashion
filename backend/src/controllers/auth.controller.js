@@ -42,10 +42,17 @@ async function registerUser(req, res) {
       sameSite: "none",
     });
 
+    const { password: _, ...safeUser } = user.toObject();
+
     return res.status(200).json({
       message: "User registered successfully",
       token,
-      user,
+      user: {
+        id: safeUser._id,
+        email: safeUser.email,
+        fullName: safeUser.fullName,
+        role: safeUser.role,
+      },
     });
 
   } catch (err) {
@@ -88,7 +95,11 @@ try{
     { expiresIn: "7d" },
   );
 
-  res.cookie("token", token);
+  res.cookie("token", token, {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+  });
 
   res.status(200).json({
     message: "User logined successfuly",
